@@ -69,7 +69,7 @@ class LedStrip:
                 for i in range(0, self.strip.numPixels(), 3):
                     self.strip.setPixelColor(i+q, 0)
 
-    def _wheel(pos):
+    def _wheel(self, pos):
         """Generate rainbow colors across 0-255 positions."""
         if pos < 85:
             return Color(pos * 3, 255 - pos * 3, 0)
@@ -84,7 +84,8 @@ class LedStrip:
         """Draw rainbow that fades across all pixels at once."""
         for j in range(256*iterations):
             for i in range(self.strip.numPixels()):
-                self.strip.setPixelColor(i, self._wheel((i+j) & 255))
+                pos = (i+j) & 255
+                self.strip.setPixelColor(i, self._wheel(pos))
 
             self.strip.show()
 
@@ -94,7 +95,8 @@ class LedStrip:
         """Draw rainbow that uniformly distributes itself across all pixels."""
         for j in range(256*iterations):
             for i in range(self.strip.numPixels()):
-                self.strip.setPixelColor(i, self._wheel(((i * 256 / self.strip.numPixels()) + j) & 255))
+                pos = ((i * 256 / self.strip.numPixels()) + j) & 255
+                self.strip.setPixelColor(i, self._wheel(pos))
 
             self.strip.show()
 
@@ -105,7 +107,8 @@ class LedStrip:
         for j in range(256):
             for q in range(3):
                 for i in range(0, self.strip.numPixels(), 3):
-                    self.strip.setPixelColor(i+q, self._wheel((i+j) % 255))
+                    pos = (i+j) % 255
+                    self.strip.setPixelColor(i+q, self._wheel(pos))
 
                 self.strip.show()
 
