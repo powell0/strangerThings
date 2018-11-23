@@ -22,7 +22,21 @@ def generate_random_color():
     return Color(random.randint(0,255), random.randint(0,255), random.randint(0,255))
 
 # Color sets
-NAMED_COLORS = [WHITE, RED, GREEN, BLUE, PURPLE, YELLOW, ORANGE, TURQUOISE]
+NAMED_COLORS = [WHITE, RED, GREEN, BLUE, PURPLE, PINK, YELLOW, ORANGE, TURQUOISE, BROWN]
+
+COLOR_MAP = {
+    "off": OFF,
+    "white": WHITE,
+    "red": RED,
+    "green": GREEN,
+    "blue": BLUE,
+    "purple": PURPLE,
+    "pink": PINK,
+    "yellow": YELLOW,
+    "orange": ORANGE,
+    "turquoise": TURQUOISE,
+    "brown": BROWN
+}
 
 STRANGER_THINGS_COLOR_STRAND = [
     YELLOW, GREEN, RED, BLUE, ORANGE, TURQUOISE, GREEN, YELLOW, PURPLE, RED, 

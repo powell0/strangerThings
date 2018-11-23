@@ -14,6 +14,22 @@ class LedStrip:
         # Intialize the library (must be called once before other functions).
         self.strip.begin()
 
+    def on(pos, color=colors.WHITE):
+        """Sets the given pixel to the provided color"""
+        pos = max(0, min(pos, self.strip.numPixels() - 1))
+
+        self.strip.setPixelColor(pos, color)
+
+        self.strip.show()
+
+    def off(pos):
+        """Turns the given pixel off"""
+        pos = max(0, min(pos, self.strip.numPixels() - 1))
+
+        self.strip.setPixelColor(pos, colors.OFF)
+
+        self.strip.show()
+
     def allOn(self, color=colors.WHITE):
         """
         Sets all pixels to the provided color.
