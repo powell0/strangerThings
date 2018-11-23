@@ -7,9 +7,9 @@ from config import settings
 from config import colors
 
 class LedStrip:
-    def __init__(self, led_count = settings.LED_COUNT, pin = settings.LED_PIN, frequency = settings.LED_FREQ_HZ, dma = settings.LED_DMA, invert = settings.LED_INVERT, brightness = settings.LED_BRIGHTNESS):
+    def __init__(self, led_count = settings.LED_COUNT, pin = settings.LED_PIN, frequency = settings.LED_FREQ_HZ, dma = settings.LED_DMA, invert = settings.LED_INVERT, brightness = settings.LED_BRIGHTNESS, pwm_channel = settings.LED_PWM_CHANNEL, strip_type = settings.LED_STRIP_TYPE):
         # Create NeoPixel object with appropriate configuration.
-        self.strip = Adafruit_NeoPixel(led_count, pin, frequency, dma, invert, brightness)
+        self.strip = Adafruit_NeoPixel(led_count, pin, frequency, dma, invert, brightness, pwm_channel, strip_type)
 
         # Intialize the library (must be called once before other functions).
         self.strip.begin()
