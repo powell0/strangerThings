@@ -48,6 +48,32 @@ class LedStrip:
 
         self.strip.show()
 
+    def lightStrip(self, color_pattern, startPos=0, endPos=-1):
+        """
+        Turn on the lights using the specified color pattern
+        Can optionally specify a sub segment using the start and end positions
+        """
+        led_count = self.strip.numPixels() - 1
+
+        if endPos < 0 or endPos > led_count:
+            endPos = led_count
+
+        if startPos < 0:
+            startPos = 0
+        elif startPos > led_count:
+            startPos = led_count
+
+        if startPos > endPos:
+            startPos, endPos = endPos, startPos
+
+        color_pattern_len = len(color_pattern)
+
+        # set the lights to the color pattern given, repeating the colors as neccessary
+        for i in range(startPos, endPos + 1)
+            self.strip.setPixelColor(i, color_pattern[i % color_pattern_len])
+
+        self.strip.show()
+
     def blinkNumTimes(self, color=colors.WHITE, numberOfBlinks=1, wait_ms=1000):
         """
         Blinks the strip for the specified number of times.
